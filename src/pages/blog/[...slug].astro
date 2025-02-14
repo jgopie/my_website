@@ -1,0 +1,19 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+import Blogpage from "../../layouts/Blogpage.astro";
+export const getStaticPaths = (async () => {
+    const posts = await getCollection("blog");    
+    return posts.map(post => ({
+        params: {slug: post.filePath?.slice(0, -3)},
+        props: {post}
+    }));
+}) satisfies GetStaticPaths;
+const {post} = Astro.props;
+const {Content} = await render(post);
+---
+
+<Blogpage frontMatter={post.data}>
+    <Content/>
+</Blogpage>

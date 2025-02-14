@@ -1,11 +1,68 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.scss";
+import {Image} from 'astro:assets';
+import coffeeBear from '../assets/coffee-bear.jpg';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home">
+  <section>
+    <p>
+		<span>W</span>
+		<span>e</span>
+		<span>l</span>
+		<span>c</span>
+		<span>o</span>
+		<span>m</span>
+		<span>e</span>
+		<span>&nbsp;</span>
+		<span>t</span>
+		<span>o</span>
+		<span>&nbsp;</span>
+		<span>m</span>
+		<span>y</span>
+		<span>&nbsp;</span>
+		<span>w</span>
+		<span>o</span>
+		<span>r</span>
+		<span>l</span>
+		<span>d</span>
+	</p>
+  </section>
+  <section>
+    <Image src={coffeeBear} alt={"A bear barista"}/>
+  </section>
 </Layout>
+
+<style lang="scss">
+  @use "../styles/global.scss" as g;
+  @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap");
+  section {
+    font-family: "Tektur", sans-serif;
+    font-size: 5rem;
+    text-align: center;
+    color: black;
+  }
+
+  span {
+	animation: 5s 1 word-pulse;
+  }
+
+  @keyframes word-pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @for $i from 1 through 19 {
+	span:nth-child(#{$i}) {
+		animation-delay: #{$i * 0.2}s;
+	}
+  }
+</style>

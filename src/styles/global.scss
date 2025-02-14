@@ -1,0 +1,11 @@
+$background_color: #040714;
+$text_color_charcoal: #2a3d45;
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Tektur:wght@400..900&display=swap');
+
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    background-image: url('../assets/blurry-gradient-haikei.svg');
+    background-size: cover;
+    background-color: $background_color;
+}

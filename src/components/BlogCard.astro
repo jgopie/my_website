@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+const images = import.meta.glob<{default: ImageMetadata}>('/src/assets/*.{jpeg,jpg,png}')
+const {title, image, slug, altText} = Astro.props;
+const resolvedImage = images[image] ? (await images[image]()).default : null;
+if (!resolvedImage) throw new Error(`Image not found: ${image}`);
+---
+<a href={`/blog/${slug}`}>
+    <div class='blog-container'>
+        <Image
+            class='blogImage'
+            src={resolvedImage}
+            alt={altText}
+            height={200}
+            width={400}
+        />
+        <div class='link-container'>
+            <p>{title}</p>
+        </div>
+    </div>
+</a>
+
+<style lang="scss">
+    .blog-container {
+    max-width: 50vw;
+    max-height: 50vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10vw;
+    font-size: xx-large;
+    padding-top: 2%;
+}
+
+.blogImage {
+    max-width: 30%;
+    max-height: 100%;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+</style>

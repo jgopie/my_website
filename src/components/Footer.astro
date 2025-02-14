@@ -1,0 +1,17 @@
+---
+import '../styles/global.scss';
+const year = new Date().getFullYear();
+---
+<footer>
+    <p>&copy Jordan Gopie {year}</p>
+</footer>
+<style lang="scss">
+    @use '../styles/global.scss' as g;
+    footer {
+        background-color: g.$background_color;
+        padding: 0.25rem;
+        font-family: 'Roboto Flex', sans-serif;
+        text-align: center;
+        color: white;
+    }
+    </style>

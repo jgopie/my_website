@@ -1,0 +1,62 @@
+---
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Blog", path: "/blog" },
+];
+---
+
+<header>
+  <nav>
+    <ul>
+      {
+        navItems.map(({ label, path }) => (
+          <li>
+            <a
+              href={path}
+              class="transition-colors duration-200 hover:text-gray-400"
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style lang="scss">
+  @use "../styles/global.scss" as g;
+  header {
+    padding: 1rem;
+    font-family: 'Roboto Flex', sans-serif;
+    background-color: g.$background_color;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: white;
+  }
+
+  li {
+    margin-left: 5%;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: large;
+    transition: background-color 750ms ease-out;
+  }
+
+  li:hover {
+    background-color: #20a4f3;
+    color: black;
+  }
+
+</style>
